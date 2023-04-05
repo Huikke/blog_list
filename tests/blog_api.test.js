@@ -18,6 +18,25 @@ test('returns correct amount of blogs in JSON format', async () => {
   expect(response.body).toHaveLength(helper.initialBlogs.length)
 })
 
+test('adds a blog to database and confirm it is added correctly', async () => {
+  const newBlog = {
+    title: 'Sinijuusto on juustoista juustoin',
+    author: 'Sini Juustonen',
+    url: 'sinijuusto.fi',
+    likes: 2
+  }
+
+  await api.post('/api/blogs').send(newBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
+
+    const DbAfterPost = await helper.blogsInDb()
+    expect(DbAfterPost).toHaveLength(helper.initialBlogs.length + 1)
+
+    const titles = DbAfterPost.map(n => n.title)
+    expect(titles).toContain('Sinijuusto on juustoista juustoin')
+})
+
 afterAll(() => {
   mongoose.connection.close()
 })
