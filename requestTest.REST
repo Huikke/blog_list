@@ -11,3 +11,11 @@ Content-Type: application/json
   "url": "yle.fi",
   "likes": 12
 }
+
+### PUT
+PUT http://localhost:3003/api/blogs/642242cc03ec8957bdfe5b08
+Content-Type: application/json
+
+{
+  "likes": "13"
+}

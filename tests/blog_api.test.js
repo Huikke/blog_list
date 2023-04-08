@@ -55,6 +55,23 @@ test('deletes a blog from database correctly', async () => {
   expect(titles).not.toContain(blogToDelete.title)
 })
 
+/* For testing put, doesn't work
+test('updates a blog posts\'s likes count', async () => {
+  const blogsAtStart = await helper.blogsInDb()
+  const blogToUpdate = blogsAtStart[0]
+  
+  blogToUpdate.likes += 1
+  console.log(blogsAtStart)
+  
+  await api
+    .put(`/api/blogs/${blogToUpdate.id}`)
+    .send(blogToUpdate.likes)
+    .expect(200)
+
+  const blogsAtEnd = await helper.blogsInDb()
+  console.log(blogsAtEnd)
+}) */
+
 afterAll(() => {
   mongoose.connection.close()
 })
