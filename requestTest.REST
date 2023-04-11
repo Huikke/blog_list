@@ -32,3 +32,15 @@ Content-Type: application/json
   "name": "Lassi Chen",
   "password": "kissa123"
 }
+
+### POST with user
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Kauan odotettu paahtoleipä on nyt kaupoissa",
+  "author": "Kaasu Karhu",
+  "url": "is.fi",
+  "likes": 2,
+  "user": "6435c01d5c687a518302301e"
+}
