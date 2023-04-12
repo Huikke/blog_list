@@ -44,3 +44,45 @@ Content-Type: application/json
   "likes": 2,
   "user": "6435c01d5c687a518302301e"
 }
+
+### Login
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "lachen",
+  "password": "kissa123"
+}
+
+### Wrong Login
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "lachen",
+  "password": "kanaleipä"
+}
+
+### POST with authorization token
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxhY2hlbiIsImlkIjoiNjQzNWMwMWQ1YzY4N2E1MTgzMDIzMDFlIiwiaWF0IjoxNjgxMzExODY3fQ.ph4lAr-ZNDDsoLOyE7rEOTYaIksF4fznE5j34zGStCM
+
+{
+  "title": "New virus is incoming",
+  "author": "Colt Virus",
+  "url": "virus.fi",
+  "likes": 6
+}
+
+### POST with wrong authorization token
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer kekw
+
+{
+  "title": "New virus is incoming",
+  "author": "Colt Virus",
+  "url": "virus.fi",
+  "likes": 6
+}
